@@ -32,3 +32,5 @@ Potential Rules:
 8. Create BAM list.
 9. Variant search with Platypus.
 10. Send to final file.
+
+https://bitbucket.org/jerlar73/fast-gbs

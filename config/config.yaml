@@ -1,0 +1,14 @@
+name:
+#channels:
+#  - bioconda
+#  - conda-forge
+#dependencies:
+#  - r-base
+#  - snakemake
+#  - samtools
+#  - minimap2
+#  - bioconductor-rsubread
+#  - nanofilt
+#  - pandoc
+
+fast_path: "D:\fastq"

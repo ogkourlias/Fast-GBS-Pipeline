@@ -1,0 +1,6 @@
+#### preliminaries ####
+configfile: "config/config.yaml"
+include: "rules/preproc.smk"
+rule all:
+    input:
+        fa=config["fa_path"] + "/SRR2073085_1.fastq"

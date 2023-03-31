@@ -11,4 +11,5 @@ name:
 #  - nanofilt
 #  - pandoc
 
-fast_path: "D:\fastq"
+fa_path: /mnt/d/fastq/
+srr: SRR2073085

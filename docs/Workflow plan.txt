@@ -2,9 +2,10 @@ Config parameters:
 1. Logdir for logfile generation
 2. Flowcell
 3. Technology
-Illumina = genIndels=1
-	   minMapQual=20
-	   minBaseQual=20
+Illumina =
+genIndels=1
+minMapQual=20
+minBaseQual=20
 
 IONTORRENT = genIndels=0
 	     minMapQual=10

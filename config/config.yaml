@@ -13,3 +13,24 @@ name:
 
 fa_path: /mnt/d/fastq/
 srr: SRR2073085
+
+technology:
+  illumina:
+    genIndels: 1
+    minMapQual: 20
+    minBaseQual: 20
+  iontorrent:
+    genIndels: 0
+    minMapQual: 10
+    minBaseQual: 10
+
+refgen: test
+adap: test
+readlen: 200
+nbcor: ok
+bwapar: ok
+bwathr: ok
+bamlist: ok
+minreads: 200
+logplat: ok
+outplat: ok

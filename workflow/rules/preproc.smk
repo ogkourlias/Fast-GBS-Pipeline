@@ -1,9 +1,21 @@
 configfile: "config/config.yaml"
 
-rule preproc:
+rule prepref:
     input:
-        fa=config["fa_path"] + config["srr"] + "_1.fastq"
+        ref=config["ref"]
     output:
-        "data/asdf.txt"
+        config["ref"] + ".amb",
+        config["ref"] + ".ann",
+        config["ref"] + ".bwt",
+        config["ref"] + ".pac",
+        config["ref"] + ".sa"
     shell:
-        "head {input} > data/asdf.txt"
+        "bwa index -a bwtsw {input}"
+
+rule index:
+    input:
+        ref=config["ref"]
+    output:
+        config["ref"] + ".fai"
+    shell:
+        "samtools faidx {input}"

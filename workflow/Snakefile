@@ -1,6 +1,8 @@
 #### preliminaries ####
 configfile: "config/config.yaml"
 include: "rules/preproc.smk"
+srr = config["srr"]
+
 rule all:
     input:
-        fa=config["fa_path"] + "/SRR2073085_1.fastq"
+        ref=config["ref"]

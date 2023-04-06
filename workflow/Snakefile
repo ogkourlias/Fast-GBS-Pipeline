@@ -1,8 +1,9 @@
 #### preliminaries ####
 configfile: "config/config.yaml"
 include: "rules/preproc.smk"
+
 srr = config["srr"]
 
 rule all:
     input:
-        ref=config["ref"]
+        ref=config["ref_path"]

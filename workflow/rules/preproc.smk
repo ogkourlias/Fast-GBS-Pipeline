@@ -1,21 +1,39 @@
+import os
 configfile: "config/config.yaml"
+data_path = config["data_path"]
+fa_path = config["fa_path"]
 
-rule prepref:
+rule ref_prep:
     input:
-        ref=config["ref"]
+        config["ref_path"] + "/ref.fna"
     output:
-        config["ref"] + ".amb",
-        config["ref"] + ".ann",
-        config["ref"] + ".bwt",
-        config["ref"] + ".pac",
-        config["ref"] + ".sa"
+        config["ref_path"] + "/ref.fna.amb",
+        config["ref_path"] + "/ref.fna.ann",
+        config["ref_path"] + "/ref.fna.bwt",
+        config["ref_path"] + "/ref.fna.pac",
+        config["ref_path"] + "/ref.fna.sa"
     shell:
         "bwa index -a bwtsw {input}"
 
 rule index:
     input:
-        ref=config["ref"]
+        config["ref_path"] + "/ref.fna"
     output:
-        config["ref"] + ".fai"
+        config["ref_path"] + "/ref.fna.fai"
     shell:
         "samtools faidx {input}"
+
+rule dmplex:
+    input:
+        fr=(config["fa_path"] + config["srr"] + "_1.fastq"),
+        rr=(config["fa_path"] + config["srr"] + "_2.fastq"),
+        br=(config["barcode_path"] + "barcodes.txt")
+    # output:
+    #     r1=(config["fa_path"] + "%_1dmplx.fastq"),
+    #     r2=(config["fa_path"] + "%_2dmplx.fastq")
+    log:
+        config["log_path"] + config["srr"] + "_dmplx.log"
+    shell:
+        "fastq-multx -b {input.br} {input.fr} {input.rr} -o {fr}%_1dmplx.fastq -o {rr}%_2dmplx.fastq"
+
+rule dmplex_check:

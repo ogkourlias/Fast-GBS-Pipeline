@@ -10,9 +10,12 @@ name:
 #  - bioconductor-rsubread
 #  - nanofilt
 #  - pandoc
-
-fa_path: /mnt/d/fastq/
+data_path: /media/orfeas/AE9E01139E00D5AD/data/
+fa_path: /media/orfeas/AE9E01139E00D5AD/data/fastq/
 srr: SRR2073085
+ref_path: /media/orfeas/AE9E01139E00D5AD/data/ref/
+barcode_path: /media/orfeas/AE9E01139E00D5AD/data/barcodes/
+log_path: /media/orfeas/AE9E01139E00D5AD/data/log/
 
 technology:
   illumina:

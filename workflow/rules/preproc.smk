@@ -37,3 +37,5 @@ rule dmplex:
         "fastq-multx -b {input.br} {input.fr} {input.rr} -o {fr}%_1dmplx.fastq -o {rr}%_2dmplx.fastq"
 
 rule dmplex_check:
+    input:
+        expand(config["fa_path"] + "{file}", file=[file for file in os.listdir(fa_path) if file.endswith("dmplx.fastq")])

@@ -23,10 +23,11 @@ def read_barcodes(config_file):
     with open(config_file, 'r') as f:
         config = yaml.safe_load(f)
         fa_path = config["fa_path"]
-    samples = [file for file in os.listdir(fa_path) if file.endswith(".dmplx.fastq")]
+    samples = [file for file in os.listdir(fa_path) if file.endswith("dmplx.fastq")]
     return samples
 def main():
-    read_barcodes("/home/orfeas/Documents/Fast-GBS-Pipeline/config/config.yaml")
+    x = read_barcodes("/home/orfeas/Documents/Fast-GBS-Pipeline/config/config.yaml")
+    print(x)
 
 if __name__ == "__main__":
     main()

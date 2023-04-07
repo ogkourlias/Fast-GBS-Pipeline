@@ -34,8 +34,8 @@ rule dmplex:
     log:
         config["log_path"] + config["srr"] + "_dmplx.log"
     shell:
-        "fastq-multx -b {input.br} {input.fr} {input.rr} -o {fr}%_1dmplx.fastq -o {rr}%_2dmplx.fastq"
+        "fastq-multx -b {input.br} {input.fr} {input.rr} -o {fr}%_1.fastq -o {rr}%_.fastq"
 
 rule dmplex_check:
     input:
-        expand(config["fa_path"] + "dmplx/" + "{file}", file=[file for file in os.listdir(fa_path) if file.endswith("dmplx.fastq")])
+        expand(config["fa_path"] + "dmplx/" + "{file}", file=[file for file in os.listdir(fa_path)])

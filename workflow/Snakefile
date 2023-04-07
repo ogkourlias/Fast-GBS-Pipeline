@@ -2,6 +2,7 @@
 configfile: "config/config.yaml"
 include: "rules/preproc.smk"
 include: "rules/cut.smk"
+include: "rules/align.smk"
 srr = config["srr"]
 
 rule all:

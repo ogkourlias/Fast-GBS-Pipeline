@@ -1,7 +1,7 @@
 #### preliminaries ####
 configfile: "config/config.yaml"
 include: "rules/preproc.smk"
-
+include: "rules/cut.smk"
 srr = config["srr"]
 
 rule all:

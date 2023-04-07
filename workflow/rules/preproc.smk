@@ -38,4 +38,4 @@ rule dmplex:
 
 rule dmplex_check:
     input:
-        expand(config["fa_path"] + "{file}", file=[file for file in os.listdir(fa_path) if file.endswith("dmplx.fastq")])
+        expand(config["fa_path"] + "dmplx/" + "{file}", file=[file for file in os.listdir(fa_path) if file.endswith("dmplx.fastq")])

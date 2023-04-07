@@ -16,6 +16,7 @@ srr: SRR2073085
 ref_path: /media/orfeas/AE9E01139E00D5AD/data/ref/
 barcode_path: /media/orfeas/AE9E01139E00D5AD/data/barcodes/
 log_path: /media/orfeas/AE9E01139E00D5AD/data/log/
+adapter_path: /media/orfeas/AE9E01139E00D5AD/data/adapters/
 
 technology:
   illumina:

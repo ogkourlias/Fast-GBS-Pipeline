@@ -5,21 +5,21 @@ fa_path = config["fa_path"]
 
 rule ref_prep:
     input:
-        config["ref_path"] + "/ref.fna"
+        config["ref_path"] + "ref.fna"
     output:
-        config["ref_path"] + "/ref.fna.amb",
-        config["ref_path"] + "/ref.fna.ann",
-        config["ref_path"] + "/ref.fna.bwt",
-        config["ref_path"] + "/ref.fna.pac",
-        config["ref_path"] + "/ref.fna.sa"
+        config["ref_path"] + "ref.fna.amb",
+        config["ref_path"] + "ref.fna.ann",
+        config["ref_path"] + "ref.fna.bwt",
+        config["ref_path"] + "ref.fna.pac",
+        config["ref_path"] + "ref.fna.sa"
     shell:
         "bwa index -a bwtsw {input}"
 
 rule index:
     input:
-        config["ref_path"] + "/ref.fna"
+        config["ref_path"] + "ref.fna"
     output:
-        config["ref_path"] + "/ref.fna.fai"
+        config["ref_path"] + "ref.fna.fai"
     shell:
         "samtools faidx {input}"
 

@@ -14,5 +14,6 @@ rule align:
                 dict[file] = file.split("_1")[0] + "_2"
         for key in dict:
             print(f"bwa mem {ref} {fa_path}trimmed/{key}.fastq {fa_path}trimmed/{dict[key]}.fastq > {data_path}aligned/{key.split('_')[0]}.sam")
-            os.system(f"bwa mem {ref} {fa_path}trimmed/{key}.fastq {fa_path}trimmed/{dict[key]}.fastq > {data_path}aligned/{key.split('_')[0]}.sam")
+            os.system(f"bwa mem {ref} {fa_path}trimmed/{key}.fastq {fa_path}trimmed/{dict[key]}.fastq > {data_path}aligned/{key.split('_')[0]}.sam |"
+                      f" samtools view -bS {data_path}aligned/{key.split('_')[0]}.sam > {data_path}aligned/bam/{key.split('_')[0]}.bam")
             #"bwa mem {ref} {file} > {file}.sam"

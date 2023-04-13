@@ -1,17 +1,12 @@
 # User paths and directories. Change these to match your system and files.
-sequences: /media/orfeas/AE9E01139E00D5AD/data/fastq/
-reference: /media/orfeas/AE9E01139E00D5AD/data/ref/
+sequence_dir: /media/orfeas/AE9E01139E00D5AD/data/fastq/
+reference: /media/orfeas/AE9E01139E00D5AD/data/ref/ref.fna
 barcodes: /media/orfeas/AE9E01139E00D5AD/data/barcodes/barcodes.txt
 adapter: /media/orfeas/AE9E01139E00D5AD/data/adapters/adapter.txt
 
 # Change the following depending on whether you are using paired or unpaired reads.
-# User directory for paired read files (if applicable) (Leave empty if unpaired).
-paired:
-  sequences: /media/orfeas/AE9E01139E00D5AD/data/fastq/
-
 # User directory for unpaired read file (Leave empty if paired).
 unpaired:
-  sequence: /media/orfeas/AE9E01139E00D5AD/data/fastq/SRR2073085_1.fastq
 
 qual: 0
 readlen: 200

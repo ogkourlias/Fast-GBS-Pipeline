@@ -1,16 +1,6 @@
 #### preliminaries ####
 configfile: "config/config.yaml"
-include: "rules/preproc.smk"
-include: "rules/cut.smk"
-include: "rules/align.smk"
-include: "rules/postproc.smk"
-srr = config["srr"]
+include: "rules/preprocessing.smk"
 
 rule all:
-    input:
-        config["ref_path"] + "ref.fna.amb",
-        config["ref_path"] + "ref.fna.ann",
-        config["ref_path"] + "ref.fna.bwt",
-        config["ref_path"] + "ref.fna.pac",
-        config["ref_path"] + "ref.fna.sa",
-        config["data_path"] + "vcf/" + "summary.vcf.gz"
+

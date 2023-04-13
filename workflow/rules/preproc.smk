@@ -1,9 +1,8 @@
-import os
 configfile: "config/config.yaml"
 data_path = config["data_path"]
 fa_path = config["fa_path"]
 
-rule ref_prep:
+rule BwaIndex:
     input:
         config["ref_path"] + "ref.fna"
     output:
@@ -15,7 +14,7 @@ rule ref_prep:
     shell:
         "bwa index -a bwtsw {input}"
 
-rule index:
+rule SamtoolsIndex:
     input:
         config["ref_path"] + "ref.fna"
     output:
@@ -23,7 +22,7 @@ rule index:
     shell:
         "samtools faidx {input}"
 
-rule dmplex:
+rule Dmplex:
     input:
         fr=(config["fa_path"] + config["srr"] + "_1.fastq"),
         rr=(config["fa_path"] + config["srr"] + "_2.fastq"),

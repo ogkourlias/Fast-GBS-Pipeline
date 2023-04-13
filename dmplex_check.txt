@@ -1,8 +1,0 @@
-/media/orfeas/AE9E01139E00D5AD/data/fastq/Sample1_1dmplx.fastq
-/media/orfeas/AE9E01139E00D5AD/data/fastq/Sample1_2dmplx.fastq
-/media/orfeas/AE9E01139E00D5AD/data/fastq/Sample2_1dmplx.fastq
-/media/orfeas/AE9E01139E00D5AD/data/fastq/Sample2_2dmplx.fastq
-/media/orfeas/AE9E01139E00D5AD/data/fastq/Sample3_1dmplx.fastq
-/media/orfeas/AE9E01139E00D5AD/data/fastq/Sample3_2dmplx.fastq
-/media/orfeas/AE9E01139E00D5AD/data/fastq/unmatched_1dmplx.fastq
-/media/orfeas/AE9E01139E00D5AD/data/fastq/unmatched_2dmplx.fastq

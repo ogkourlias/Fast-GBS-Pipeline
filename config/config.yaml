@@ -1,23 +1,15 @@
-name:
-#channels:
-#  - bioconda
-#  - conda-forge
-#dependencies:
-#  - r-base
-#  - snakemake
-#  - samtools
-#  - minimap2
-#  - bioconductor-rsubread
-#  - nanofilt
-#  - pandoc
+# Paths and directories.
 data_path: /media/orfeas/AE9E01139E00D5AD/data/
 fa_path: /media/orfeas/AE9E01139E00D5AD/data/fastq/
-srr: SRR2073085
 ref_path: /media/orfeas/AE9E01139E00D5AD/data/ref/
 barcode_path: /media/orfeas/AE9E01139E00D5AD/data/barcodes/
 log_path: /media/orfeas/AE9E01139E00D5AD/data/log/
 adapter_path: /media/orfeas/AE9E01139E00D5AD/data/adapters/
+
+srr: SRR2073085
+
 qual: 0
+paired_bool: 0
 
 technology:
   illumina:
@@ -29,13 +21,5 @@ technology:
     minMapQual: 10
     minBaseQual: 10
 
-refgen: test
-adap: test
 readlen: 200
-nbcor: ok
-bwapar: ok
-bwathr: ok
-bamlist: ok
 minreads: 200
-logplat: ok
-outplat: ok

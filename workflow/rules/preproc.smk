@@ -7,11 +7,11 @@ rule ref_prep:
     input:
         config["ref_path"] + "ref.fna"
     output:
-        config["ref_path"] + "ref.fna.amb",
-        config["ref_path"] + "ref.fna.ann",
-        config["ref_path"] + "ref.fna.bwt",
-        config["ref_path"] + "ref.fna.pac",
-        config["ref_path"] + "ref.fna.sa"
+        config["ref_path"] + "ref.amb",
+        config["ref_path"] + "ref.ann",
+        config["ref_path"] + "ref.bwt",
+        config["ref_path"] + "ref.pac",
+        config["ref_path"] + "ref.sa"
     shell:
         "bwa index -a bwtsw {input}"
 
@@ -19,7 +19,7 @@ rule index:
     input:
         config["ref_path"] + "ref.fna"
     output:
-        config["ref_path"] + "ref.fna.fai"
+        config["ref_path"] + "ref.fai"
     shell:
         "samtools faidx {input}"
 
@@ -35,7 +35,3 @@ rule dmplex:
         config["log_path"] + config["srr"] + "_dmplx.log"
     shell:
         "fastq-multx -b {input.br} {input.fr} {input.rr} -o {fr}%_1.fastq -o {rr}%_.fastq"
-
-rule dmplex_check:
-    input:
-        expand(config["fa_path"] + "dmplx/" + "{file}", file=[file for file in os.listdir(fa_path)])

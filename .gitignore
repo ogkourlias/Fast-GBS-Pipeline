@@ -134,4 +134,9 @@ dmypy.json
 # Pycharm
 .idea/
 old_workflow/
-output/*
+output/aligned/*
+output/demultiplexed/*
+output/filtered/*
+output/final/*
+output/ref/*
+output/trimmed/*

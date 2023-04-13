@@ -1,25 +1,27 @@
-# Paths and directories.
-data_path: /media/orfeas/AE9E01139E00D5AD/data/
-fa_path: /media/orfeas/AE9E01139E00D5AD/data/fastq/
-ref_path: /media/orfeas/AE9E01139E00D5AD/data/ref/
-barcode_path: /media/orfeas/AE9E01139E00D5AD/data/barcodes/
-log_path: /media/orfeas/AE9E01139E00D5AD/data/log/
-adapter_path: /media/orfeas/AE9E01139E00D5AD/data/adapters/
+# User paths and directories. Change these to match your system and files.
+sequences: /media/orfeas/AE9E01139E00D5AD/data/fastq/
+reference: /media/orfeas/AE9E01139E00D5AD/data/ref/
+barcodes: /media/orfeas/AE9E01139E00D5AD/data/barcodes/barcodes.txt
+adapter: /media/orfeas/AE9E01139E00D5AD/data/adapters/adapter.txt
 
-srr: SRR2073085
+# Change the following depending on whether you are using paired or unpaired reads.
+# User directory for paired read files (if applicable) (Leave empty if unpaired).
+paired:
+  sequences: /media/orfeas/AE9E01139E00D5AD/data/fastq/
+
+# User directory for unpaired read file (Leave empty if paired).
+unpaired:
+  sequence: /media/orfeas/AE9E01139E00D5AD/data/fastq/SRR2073085_1.fastq
 
 qual: 0
-paired_bool: 0
-
-technology:
-  illumina:
-    genIndels: 1
-    minMapQual: 20
-    minBaseQual: 20
-  iontorrent:
-    genIndels: 0
-    minMapQual: 10
-    minBaseQual: 10
-
 readlen: 200
 minreads: 200
+
+# Workflow paths. Do not change these unless you know what you are doing.
+aligned: /output/aligned/
+demultiplexed: /output/demultiplexed/
+filtered: /output/filtered/
+final: /output/final/
+ref: /output/ref/
+trimmed: /output/trimmed/
+logs: /output/logs/

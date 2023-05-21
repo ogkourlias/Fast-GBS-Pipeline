@@ -1,5 +1,5 @@
 # User paths and directories. Change these to match your system and files.
-sequence_dir: /media/orfeas/AE9E01139E00D5AD/data/fastq/
+sequences: /media/orfeas/AE9E01139E00D5AD/data/fastq/
 reference: /media/orfeas/AE9E01139E00D5AD/data/ref/ref.fna
 barcodes: /media/orfeas/AE9E01139E00D5AD/data/barcodes/barcodes.txt
 adapter: /media/orfeas/AE9E01139E00D5AD/data/adapters/adapter.txt
@@ -13,10 +13,10 @@ readlen: 200
 minreads: 200
 
 # Workflow paths. Do not change these unless you know what you are doing.
-aligned: /output/aligned/
-demultiplexed: /output/demultiplexed/
-filtered: /output/filtered/
-final: /output/final/
-ref: /output/ref/
-trimmed: /output/trimmed/
-logs: /output/logs/
+aligned: output/aligned/
+demultiplexed: output/demultiplexed/
+filtered: output/filtered/
+final: output/final/
+ref_output: output/ref/
+trimmed: output/trimmed/
+logs: output/logs/

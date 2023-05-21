@@ -1,6 +1,13 @@
 #### preliminaries ####
 configfile: "config/config.yaml"
+data = config["sequences"]
 include: "rules/preprocessing.smk"
 
 rule all:
-
+    input:
+        config["ref_output"] + "ref.amb",
+        config["ref_output"] + "ref.ann",
+        config["ref_output"] + "ref.bwt",
+        config["ref_output"] + "ref.pac",
+        config["ref_output"] + "ref.sa",
+        config["ref_output"] + "ref.fai"

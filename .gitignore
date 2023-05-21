@@ -140,3 +140,5 @@ output/filtered/*
 output/final/*
 output/ref/*
 output/trimmed/*
+
+old_workflow/*

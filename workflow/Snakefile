@@ -6,14 +6,17 @@ Main rule to run the pipeline.
 configfile: "config/config.yaml"
 include: "rules/preprocessing.smk"
 include: "rules/demultiplex.smk"
+include: "rules/cut.smk"
+include: "rules/align.smk"
 
 # Parameters
 output_dir = config["demultiplexed"]
 barcodes = config["barcodes"]
 trimmed = config["trimmed"]
+aligned = config["aligned"]
+demultiplexed = config["demultiplexed"]
 barcode_ids = [line.split('\t')[0] for line in open(config["barcodes"], "r")]
 
 rule all:
     input:
-        expand([trimmed + "{id}_1.fastq", trimmed + "{id}_2.fastq"], id=barcode_ids)
-
+        expand(aligned + "{id}.sam", id = barcode_ids),

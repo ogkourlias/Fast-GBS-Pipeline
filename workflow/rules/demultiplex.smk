@@ -18,10 +18,8 @@ rule demultiplex:
         rr=(config["rr"]),
         barcodes=(config["barcodes"])
     output:
-        expand(demultiplexed + "{id}_1.fastq", id = barcode_ids),
-        expand(demultiplexed + "{id}_2.fastq", id = barcode_ids),
-        demultiplexed + "unmatched_1.fastq",
-        demultiplexed + "unmatched_2.fastq"
+        demultiplexed + "{id}_1.fastq",
+        demultiplexed + "{id}_2.fastq",
     shell:
         """fastq-multx -b {barcodes} {input.fr} {input.rr} -o {demultiplexed}%_1.fastq -o {demultiplexed}%_2.fastq
         """

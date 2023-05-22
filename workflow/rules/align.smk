@@ -1,8 +1,14 @@
-import os
+"""
+Contains rules for preprocessing of the reference data.
+"""
+
+# Imports
 configfile: "config/config.yaml"
-ref = config["ref_path"] + "ref.fna"
-fa_path = config["fa_path"]
-data_path = config["data_path"]
+
+# Parameters
+output_dir = config["demultiplexed"]
+
+# Rules
 rule align:
     input:
         expand(config["fa_path"] + "trimmed/" + "{file}", file=[file for file in os.listdir(fa_path + "trimmed/")])

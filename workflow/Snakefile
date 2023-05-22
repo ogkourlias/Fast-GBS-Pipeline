@@ -1,13 +1,19 @@
-#### preliminaries ####
+"""
+Main rule to run the pipeline.
+"""
+
+# Imports
 configfile: "config/config.yaml"
-data = config["sequences"]
 include: "rules/preprocessing.smk"
+include: "rules/demultiplex.smk"
+
+# Parameters
+output_dir = config["demultiplexed"]
+barcodes = config["barcodes"]
+trimmed = config["trimmed"]
+barcode_ids = [line.split('\t')[0] for line in open(config["barcodes"], "r")]
 
 rule all:
     input:
-        config["ref_output"] + "ref.amb",
-        config["ref_output"] + "ref.ann",
-        config["ref_output"] + "ref.bwt",
-        config["ref_output"] + "ref.pac",
-        config["ref_output"] + "ref.sa",
-        config["ref_output"] + "ref.fai"
+        expand([trimmed + "{id}_1.fastq", trimmed + "{id}_2.fastq"], id=barcode_ids)
+

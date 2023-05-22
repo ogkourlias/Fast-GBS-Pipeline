@@ -3,20 +3,25 @@ Contains rules for preprocessing of the reference data.
 """
 
 # Imports
-
-# Parameters
 configfile: "config/config.yaml"
 
+# Parameters
+demultiplexed = config["demultiplexed"]
+barcodes = config["barcodes"]
+barcode_ids = [line.split('\t')[0] for line in open(config["barcodes"], "r")]
+
+print(barcode_ids)
 # Rules
-rule Demultiplex:
+rule demultiplex:
     input:
-        fr=(config["fa_path"] + config["srr"] + "_1.fastq"),
-        rr=(config["fa_path"] + config["srr"] + "_2.fastq"),
-        br=(config["barcode_path"] + "barcodes.txt")
-    # output:
-    #     r1=(config["fa_path"] + "%_1dmplx.fastq"),
-    #     r2=(config["fa_path"] + "%_2dmplx.fastq")
-    log:
-        config["log_path"] + config["srr"] + "_dmplx.log"
+        fr=(config["fr"]),
+        rr=(config["rr"]),
+        barcodes=(config["barcodes"])
+    output:
+        expand(demultiplexed + "{id}_1.fastq", id = barcode_ids),
+        expand(demultiplexed + "{id}_2.fastq", id = barcode_ids),
+        demultiplexed + "unmatched_1.fastq",
+        demultiplexed + "unmatched_2.fastq"
     shell:
-        "fastq-multx -b {input.br} {input.fr} {input.rr} -o {fr}%_1.fastq -o {rr}%_.fastq"
+        """fastq-multx -b {barcodes} {input.fr} {input.rr} -o {demultiplexed}%_1.fastq -o {demultiplexed}%_2.fastq
+        """

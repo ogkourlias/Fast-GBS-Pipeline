@@ -1,10 +1,14 @@
-import os
-configfile: "config/config.yaml"
-ref = config["ref_path"] + "ref.fna"
-fa_path = config["fa_path"]
-data_path = config["data_path"]
-qs = config["qual"]
+"""
+Contains rules for preprocessing of the reference data.
+"""
 
+# Imports
+configfile: "config/config.yaml"
+
+# Parameters
+output_dir = config["demultiplexed"]
+
+# Rules
 rule quality_control:
     input:
         expand(data_path + "aligned/bam/" + "{file}", file=[file for file in os.listdir(data_path + "aligned/bam/")])

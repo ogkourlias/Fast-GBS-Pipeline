@@ -21,5 +21,4 @@ rule demultiplex:
         demultiplexed + "{id}_1.fastq",
         demultiplexed + "{id}_2.fastq",
     shell:
-        """fastq-multx -b {barcodes} {input.fr} {input.rr} -o {demultiplexed}%_1.fastq -o {demultiplexed}%_2.fastq
-        """
+        """fastq-multx -b {barcodes} {input.fr} {input.rr} -o {demultiplexed}%_1.fastq -o {demultiplexed}%_2.fastq"""

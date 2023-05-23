@@ -1,6 +1,6 @@
 # User paths and directories. Change these to match your system and files.
-fr: /media/orfeas/AE9E01139E00D5AD/data/fastq/SRR2073085_1.fastq
-rr: /media/orfeas/AE9E01139E00D5AD/data/fastq/SRR2073085_2.fastq
+fr: /media/orfeas/AE9E01139E00D5AD/data/fastq/test_1.fastq
+rr: /media/orfeas/AE9E01139E00D5AD/data/fastq/test_2.fastq
 reference: /media/orfeas/AE9E01139E00D5AD/data/ref/ref.fna
 barcodes: /media/orfeas/AE9E01139E00D5AD/data/barcodes/barcodes.txt
 adapter: /media/orfeas/AE9E01139E00D5AD/data/adapters/adapter.txt

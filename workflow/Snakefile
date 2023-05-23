@@ -16,7 +16,10 @@ trimmed = config["trimmed"]
 aligned = config["aligned"]
 demultiplexed = config["demultiplexed"]
 barcode_ids = [line.split('\t')[0] for line in open(config["barcodes"], "r")]
+ref = config["reference"]
+ref_id = config["reference"].split("/")[-1]
 
 rule all:
     input:
         expand(aligned + "{id}.sam", id = barcode_ids),
+

@@ -6,7 +6,9 @@ Contains rules for preprocessing of the reference data.
 
 # Parameters
 configfile: "config/config.yaml"
-ref = config["ref_output"]
+ref_output = config["ref_output"]
+ref_id = config["reference"].split("/")[-1]
+ref_name = ref_id.split(".")[0]
 
 # Rules
 rule Index:
@@ -21,7 +23,10 @@ rule Index:
         config["ref_output"] + "ref.bwt",
         config["ref_output"] + "ref.pac",
         config["ref_output"] + "ref.sa",
-        config["ref_output"] + "ref.fai"
     shell:
-        """bwa index -p {ref}ref -a bwtsw {input}
-        samtools faidx {input} -o {ref}ref.fai"""
+        """cp {input} {ref_output}{ref_id}
+        bwa index -p {ref_output}{ref_name} -a bwtsw {ref_output}{ref_id}
+        """
+
+        # samtools faidx {ref_output}{ref_id} -o {ref}.fai
+

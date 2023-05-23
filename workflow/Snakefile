@@ -8,18 +8,23 @@ include: "rules/preprocessing.smk"
 include: "rules/demultiplex.smk"
 include: "rules/cut.smk"
 include: "rules/align.smk"
+include: "rules/postprocessing.smk"
 
 # Parameters
-output_dir = config["demultiplexed"]
-barcodes = config["barcodes"]
-trimmed = config["trimmed"]
 aligned = config["aligned"]
-demultiplexed = config["demultiplexed"]
+barcodes = config["barcodes"]
+filtered = config["filtered"]
+ref_output = config["ref_output"]
+final = config["final"]
+
+qual = config["qual"]
+
 barcode_ids = [line.split('\t')[0] for line in open(config["barcodes"], "r")]
-ref = config["reference"]
 ref_id = config["reference"].split("/")[-1]
+ref_name = ref_id.split(".")[0]
 
 rule all:
     input:
-        expand(aligned + "{id}.sam", id = barcode_ids),
+        # expand(aligned + "{id}.sam", id = barcode_ids),
+        expand(final + "{id}.vcf", id = barcode_ids),
 

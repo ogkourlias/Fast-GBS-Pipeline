@@ -6,47 +6,41 @@ Contains rules for preprocessing of the reference data.
 configfile: "config/config.yaml"
 
 # Parameters
-output_dir = config["demultiplexed"]
+aligned = config["aligned"]
+barcodes = config["barcodes"]
+filtered = config["filtered"]
+ref_output = config["ref_output"]
+final = config["final"]
+
+qual = config["qual"]
+
+barcode_ids = [line.split('\t')[0] for line in open(config["barcodes"], "r")]
+ref_id = config["reference"].split("/")[-1]
+ref_name = ref_id.split(".")[0]
 
 # Rules
 rule quality_control:
     input:
-        expand(data_path + "aligned/bam/" + "{file}", file=[file for file in os.listdir(data_path + "aligned/bam/")])
-    run:
-        for file in input:
-            print(f"samtools view -bh -q {qs} {file} > {data_path}/aligned/filtered/{file.split('/')[-1]}")
-            os.system(f"samtools view -bh -q {qs} {file} > {data_path}/aligned/filtered/{file.split('/')[-1]}")
-
-rule create_dict:
-    input:
-        ref
+        aligned + "{id}.sam"
     output:
-        ref.split('.')[0] + ".dict"
+        filtered + "{id}.bam"
     shell:
-        "gatk CreateSequenceDictionary -R {input} -O {output}"
+        "samtools view -h -q {qual} -S -b {input} -o {output}"
 
-rule haplotype:
+    #samtools view -h -q 20 -S -b aligned.sam -o filtered.bam
+
+
+
+rule haplotype_caller:
     input:
-        expand(data_path + "aligned/filtered/" + "{file}", file=[file for file in os.listdir(data_path + "aligned/filtered/")])
+        filtered + "{id}.bam"
     output:
-        config["data_path"] + "vcf/" + "summary.vcf.gz"
+        final + "{id}.vcf"
+    shell:
+        "freebayes -f {ref_output}{ref_id} {input} > {output}"
 
-    run:
-        for file in input:
-            print(f"gatk HaplotypeCaller -R {ref} -I {file} -O {data_path}vcf/{file.split('/')[-1].split('.')[0]}.vcf.gz")
-            os.system(f"gatk HaplotypeCaller -R {ref} -I {file} -O {data_path}vcf/{file.split('/')[-1].split('.')[0]}.vcf.gz")
-        open(f'{data_path}vcf/summary.vcf.gz', "w").close()
 
-            #DIT WERKT NOG NIET
-            # DIT WERKT NOG NIET
-            # DIT WERKT NOG NIET
-            # DIT WERKT NOG NIET
-
-# rule haplo_check:
-#     output:
-#         "{data}"
-
-# rule call:
+    # rule call:
 #     input:
 #         expand(data_path + "vcf/" + "{file}", file=[file for file in os.listdir(data_path + "vcf/")])
 #

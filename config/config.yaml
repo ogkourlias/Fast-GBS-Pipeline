@@ -1,7 +1,7 @@
 # User paths and directories. Change these to match your system and files.
-fr: /media/orfeas/AE9E01139E00D5AD/data/fastq/test_1.fastq
-rr: /media/orfeas/AE9E01139E00D5AD/data/fastq/test_2.fastq
-reference: /media/orfeas/AE9E01139E00D5AD/data/ref/ref.fna
+fr: /media/orfeas/AE9E01139E00D5AD/data/fastq/SRR2073085_1.fastq
+rr: /media/orfeas/AE9E01139E00D5AD/data/fastq/SRR2073085_2.fastq
+reference: /media/orfeas/AE9E01139E00D5AD/data/ref/GCA_000004515.5_Glycine_max_v4.0_genomic.fna
 barcodes: /media/orfeas/AE9E01139E00D5AD/data/barcodes/barcodes.txt
 adapter: /media/orfeas/AE9E01139E00D5AD/data/adapters/adapter.txt
 
@@ -9,7 +9,7 @@ adapter: /media/orfeas/AE9E01139E00D5AD/data/adapters/adapter.txt
 # User directory for unpaired read file (Leave empty if paired).
 unpaired:
 
-qual: 0
+qual: 20
 readlen: 200
 minreads: 200
 

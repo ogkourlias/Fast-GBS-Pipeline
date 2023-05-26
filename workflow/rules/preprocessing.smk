@@ -1,7 +1,11 @@
-# This script contains rules for preprocessing of the reference data.
+"""
+Contains rules for preprocessing the barcodes.
+"""
+
+# Imports
+configfile: "config/config.yaml"
 
 # Parameters
-configfile: "config/config.yaml"
 ref_output = config["ref_output"]
 ref_id = config["reference"].split("/")[-1]
 ref_name = ref_id.split(".")[0]

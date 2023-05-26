@@ -1,7 +1,11 @@
-# This script contains rules for preprocessing of the reference data.
+"""
+Contains rules for postprocessing of the samples.
+"""
+
+# Imports
+configfile: "config/config.yaml"
 
 # Parameters
-configfile: "config/config.yaml"
 aligned = config["aligned"]
 barcodes = config["barcodes"]
 filtered = config["filtered"]
@@ -37,4 +41,17 @@ rule haplotype_caller:
     shell:
         """
         freebayes -f {ref_output}{ref_id} {input} > {output}
+        """
+
+rule img_gen:
+    """
+    Rule to generate images of the quality scores.
+    """
+    input:
+        final + "{id}.vcf"
+    output:
+        final + "{id}.png"
+    shell:
+        """
+        python3 workflow/scripts/imggen.py -id {wildcards.id} -i {input}
         """

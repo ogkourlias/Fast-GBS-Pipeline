@@ -1,5 +1,5 @@
 """
-Contains rules for preprocessing of the reference data.
+Contains rules for aligning the samples.
 """
 
 # Imports
@@ -14,8 +14,6 @@ ref_output = config["ref_output"]
 ref_id = config["reference"].split("/")[-1]
 ref_name = ref_id.split(".")[0]
 ref_file_new = ref_output + ref_name
-print(ref_file_new)
-
 
 # Rules
 rule align:
@@ -32,6 +30,4 @@ rule align:
     shell:
         """mkdir -p {aligned}
         bwa mem {ref_output}{ref_name} {input.fr} {input.rr} > {output}"""
-
-            #"bwa mem <path-to-reference> <path-to-read1.fq> <path-to-read2.fq> > <path-to-output.sam>
 

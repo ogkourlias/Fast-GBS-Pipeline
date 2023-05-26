@@ -1,7 +1,11 @@
-# This script contains rules for preprocessing of the reference data.
+"""
+Contains rules for demultiplexing the barcodes.
+"""
+
+# Imports
+configfile: "config/config.yaml"
 
 # Parameters
-configfile: "config/config.yaml"
 demultiplexed = config["demultiplexed"]
 barcodes = config["barcodes"]
 barcode_ids = [line.split('\t')[0] for line in open(config["barcodes"], "r")]

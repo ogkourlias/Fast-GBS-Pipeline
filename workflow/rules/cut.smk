@@ -1,7 +1,11 @@
-# This script contains rules for preprocessing of the reference data.
+"""
+Contains rules for cutting the samples.
+"""
+
+# Imports
+configfile: "config/config.yaml"
 
 # Parameters
-configfile: "config/config.yaml"
 demultiplexed = config["demultiplexed"]
 ads = config["adapter"]
 trimmed = config["trimmed"]

@@ -1,5 +1,7 @@
-# Main rule to run the pipeline:
-# snakemake -s Snakefile --cores 4
+"""
+Contains rules for aligning the samples.
+    usage: snakemake -c12
+"""
 
 # Imports
 configfile: "config/config.yaml"
@@ -26,4 +28,4 @@ include: "rules/postprocessing.smk"
 # Main Rule
 rule all:
     input:
-        expand(final + "{id}.vcf", id = barcode_ids),
+        expand(final + "{id}.png", id = barcode_ids),

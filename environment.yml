@@ -1,0 +1,12 @@
+name: fgbs
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python
+  - bwa
+  - openssl
+  - samtools
+  - fastq-multx
+  - freebayes

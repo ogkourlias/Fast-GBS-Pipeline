@@ -13,17 +13,20 @@ barcode_ids = [line.split('\t')[0] for line in open(config["barcodes"], "r")]
 ref_output = config["ref_output"]
 ref_id = config["reference"].split("/")[-1]
 ref_name = ref_id.split(".")[0]
+ref_file_new = ref_output + ref_name
+print(ref_file_new)
+
 
 # Rules
 rule align:
     input:
         fr = config["trimmed"] + "{id}_1.fastq",
         rr = config["trimmed"] + "{id}_2.fastq",
-        amb = config["ref_output"] + "ref.amb",
-        ann = config["ref_output"] + "ref.ann",
-        bwt = config["ref_output"] + "ref.bwt",
-        pac = config["ref_output"] + "ref.pac",
-        sa = config["ref_output"] + "ref.sa",
+        amb = ref_file_new + ".amb",
+        ann = ref_file_new + ".ann",
+        bwt = ref_file_new + ".bwt",
+        pac = ref_file_new + ".pac",
+        sa = ref_file_new + ".sa",
     output:
         aligned + "{id}.sam"
     shell:
